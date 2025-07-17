@@ -14,7 +14,7 @@ const Dashboard = ({ user, token, onLogout, onUserUpdate }) => {
   const [userMessages, setUserMessages] = useState({}); // Store messages for each user
 
   useEffect(() => {
-    const newSocket = io('http://localhost:5000', {
+    const newSocket = io('https://celebrated-donut-bc8a59.netlify.app', {
       transports: ['websocket'],
     });
     setSocket(newSocket);
@@ -146,7 +146,7 @@ const Dashboard = ({ user, token, onLogout, onUserUpdate }) => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users', {
+      const response = await fetch('https://celebrated-donut-bc8a59.netlify.app/api/users', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -160,7 +160,7 @@ const Dashboard = ({ user, token, onLogout, onUserUpdate }) => {
         const usersWithMessages = await Promise.all(
           otherUsers.map(async (otherUser) => {
             try {
-              const messagesResponse = await fetch(`http://localhost:5000/api/messages/${otherUser._id}`, {
+              const messagesResponse = await fetch(`https://celebrated-donut-bc8a59.netlify.app/api/messages/${otherUser._id}`, {
                 headers: {
                   'Authorization': `Bearer ${token}`
                 }
@@ -216,7 +216,7 @@ const Dashboard = ({ user, token, onLogout, onUserUpdate }) => {
 
   const fetchMessages = async (receiverId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/messages/${receiverId}`, {
+      const response = await fetch(`https://celebrated-donut-bc8a59.netlify.app/api/messages/${receiverId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -236,7 +236,7 @@ const Dashboard = ({ user, token, onLogout, onUserUpdate }) => {
 
   const markMessagesAsRead = async (senderId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/messages/mark-read/${senderId}`, {
+      const response = await fetch(`https://celebrated-donut-bc8a59.netlify.app/api/messages/mark-read/${senderId}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -291,7 +291,7 @@ const Dashboard = ({ user, token, onLogout, onUserUpdate }) => {
   const handleDeleteAccount = async () => {
     if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
       try {
-        const response = await fetch('http://localhost:5000/api/account', {
+        const response = await fetch('https://celebrated-donut-bc8a59.netlify.app/api/account', {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`

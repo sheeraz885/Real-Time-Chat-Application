@@ -22,7 +22,7 @@ const Signup = ({ onSignup, onSwitchToLogin }) => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/signup', {
+      const response = await fetch('https://celebrated-donut-bc8a59.netlify.app/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

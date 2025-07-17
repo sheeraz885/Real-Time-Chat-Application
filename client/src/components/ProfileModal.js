@@ -24,7 +24,7 @@ const ProfileModal = ({ user, token, onClose, onUserUpdate, onDeleteAccount }) =
     setSuccess('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/profile', {
+      const response = await fetch('https://celebrated-donut-bc8a59.netlify.app/api/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
